@@ -26,21 +26,15 @@ namespace MadaminovBDKyrsach
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TheatreContext>(options =>
+            services.AddDbContext<LibrarysContext>(options =>
             {
-             
-                options.UseSqlServer("Server=DESKTOP-QFHLJ6R;Initial Catalog=Theatre;Integrated Security=True");
-
-                // Uncomment to use demo with SQL Server express
-                // options.UseSqlServer(Configuration.GetConnectionString("EasyDataDB"));
+                options.UseSqlServer("Server=DESKTOP-QFHLJ6R;Initial Catalog=Librarys;Integrated Security=True");
             });
             services.AddRazorPages();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -56,7 +50,7 @@ namespace MadaminovBDKyrsach
 
             app.UseEndpoints(endpoints => {
                 endpoints.MapEasyData(options => {
-                    options.UseDbContext<TheatreContext>();
+                    options.UseDbContext<LibrarysContext>();
                 });
                 endpoints.MapRazorPages();
             });
