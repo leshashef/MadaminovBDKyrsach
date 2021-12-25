@@ -29,10 +29,10 @@ namespace MadaminovBDKyrsach
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<TheatreContext>(options =>
+            services.AddDbContext<StudentPerformanceContext>(options =>
             {
-             
-                options.UseSqlServer("Server=DESKTOP-QFHLJ6R;Initial Catalog=Theatre;Integrated Security=True");
+
+                options.UseSqlServer("Server=DESKTOP-QFHLJ6R;Initial Catalog=StudentPerformance;Integrated Security=True");
 
                 // Uncomment to use demo with SQL Server express
                 // options.UseSqlServer(Configuration.GetConnectionString("EasyDataDB"));
@@ -55,8 +55,9 @@ namespace MadaminovBDKyrsach
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints => {
-                endpoints.MapEasyData(options => {
-                    options.UseDbContext<TheatreContext>();
+                endpoints.MapEasyData(options =>
+                {
+                    options.UseDbContext<StudentPerformanceContext>();
                 });
                 endpoints.MapRazorPages();
             });
